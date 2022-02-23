@@ -1,0 +1,6 @@
+[submodule "bootstrap-rootfs/mmdebstrap"]
+	path = bootstrap-rootfs/mmdebstrap
+	url = https://gitlab.mister-muffin.de/josch/mmdebstrap
+[submodule ".warpforge/catalogs/main"]
+	path = .warpforge/catalogs/main
+	url = git@github.com:ericevenchick/distro-catalog.git

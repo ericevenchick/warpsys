@@ -1,0 +1,34 @@
+{
+	"inputs": {
+		"rootfs": "catalog:distro.warpforge.org/bootstrap-rootfs:focal-1645037482:x86_64",
+		"pwd": "mount:bind:."
+	},
+	"steps": {
+		"hello-world": {
+			"protoformula": {
+				"inputs": {
+					"/": "pipe::rootfs"
+					"/pwd": "pipe::pwd"
+				},
+				"action": {
+					"script": {
+						"interpreter": "/bin/sh",
+						"contents": [
+							"bash /pwd/check-rootfs.sh"
+						],
+						"network": false
+					}
+				},
+				"outputs": {
+					"out": {
+						"from": "/output",
+						"packtype": "tar"
+					}
+				}
+			}
+		}
+	},
+	"outputs": {
+		"output": "pipe:hello-world:out"
+	}
+}

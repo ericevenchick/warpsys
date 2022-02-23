@@ -1,0 +1,45 @@
+{
+	"inputs": {
+		"rootfs": "catalog:alpinelinux.org/alpine:v3.15.0:x86_64"
+		"gcc": "catalog:gnu.org/gcc:v11.2.0:x86_64"
+		"libc": "catalog:gnu.org/libc:v2.35:x86_64"
+		"binutils": "catalog:gnu.org/binutils:v2.38:x86_64"
+	},
+	"steps": {
+		"build": {
+			"protoformula": {
+				"inputs": {
+					"/": "pipe::rootfs",
+					"/tools/gcc": "pipe::gcc",
+					"/tools/binutils": "pipe::binutils",
+					"/tools/libc": "pipe::libc",
+					"/pwd": "mount:overlay:."
+				},
+				"action": {
+					"script": {
+						"interpreter": "/bin/sh",
+						"contents": [
+							"mkdir -p /prefix/",
+							"mkdir /out"
+							"ln -s /tools/libc/lib/ /prefix/lib",
+							"ln -s /tools/libc/lib/ /lib64",
+							"cd /pwd",
+							"export PATH=/tools/gcc/bin:/tools/binutils/bin:$PATH",
+							"gcc test.c -o/out/hello -I/tools/libc/include -L/tools/libc/lib",
+							"/out/hello",
+						]
+					}
+				},
+				"outputs": {
+					"out": {
+						"from": "/out",
+						"packtype": "tar"
+					}
+				}
+			}
+		}
+	},
+	"outputs": {
+		"x86_64": "pipe:build:out"
+	}
+}

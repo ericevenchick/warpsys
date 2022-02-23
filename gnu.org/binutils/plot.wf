@@ -17,7 +17,7 @@
 							"mkdir -v build",
 							"cd build"
 							"../configure --prefix=/prefix/ --disable-nls --disable-werror"
-							"make -j3",
+							"make",
 							"make DESTDIR=/out install",
 						]
 					}

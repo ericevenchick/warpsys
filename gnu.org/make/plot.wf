@@ -17,7 +17,7 @@
 							"mkdir -v build",
 							"cd build"
 							"../configure --prefix=/prefix/"
-							"make -j3",
+							"make",
 							"make DESTDIR=/out install",
 						]
 					}

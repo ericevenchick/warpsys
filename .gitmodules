@@ -4,3 +4,6 @@
 [submodule ".warpforge/catalogs/main"]
 	path = .warpforge/catalogs/main
 	url = git@github.com:ericevenchick/distro-catalog.git
+[submodule ".warpforge/catalogs/default-remote"]
+	path = .warpforge/catalogs/default-remote
+	url = https://github.com/warpfork/wfcatalog

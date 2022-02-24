@@ -16,6 +16,7 @@
 							"cd /src/*",
 							"mkdir -v build",
 							"cd build"
+							"export SOURCE_DATE_EPOCH=1262304000",
 							"../configure --prefix=/prefix/ --disable-nls --disable-werror"
 							"make",
 							"make DESTDIR=/out install",
